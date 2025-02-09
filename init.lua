@@ -94,7 +94,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 
 if vim.g.neovide then
-  vim.o.guifont = 'Cascadia Mono:h10'
+  vim.o.guifont = 'Cascadia Code:h10'
 end
 
 -- [[ Setting options ]]
@@ -945,7 +945,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
@@ -959,6 +959,34 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+  --
+
+  {
+    'Mythos-404/xmake.nvim',
+    lazy = true,
+    event = 'BufReadPost',
+    config = true,
+  },
+
+  {
+    'rcarriga/nvim-notify',
+  },
+
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*', -- Use the latest stable version
+    config = function()
+      require('toggleterm').setup {
+        size = 20,
+        open_mapping = [[<C-\>]], -- Default keybinding (Ctrl+\)
+        shade_terminals = true,
+        direction = 'float', -- Other options: "horizontal", "vertical", "tab"
+        float_opts = {
+          border = 'curved',
+        },
+      }
+    end,
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
