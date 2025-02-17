@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 if vim.g.neovide then
   vim.o.guifont = 'Cascadia Code:h10'
@@ -110,6 +110,11 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
+
+-- indent size
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.wrap = false
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
