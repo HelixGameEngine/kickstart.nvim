@@ -95,6 +95,8 @@ vim.g.have_nerd_font = true
 
 if vim.g.neovide then
   vim.o.guifont = 'Cascadia Code:h10'
+else
+  vim.o.guifont = 'CaskaydiaMono Nerd Font:h10'
 end
 
 -- [[ Setting options ]]
@@ -648,6 +650,7 @@ require('lazy').setup({
               completion = {
                 callSnippet = 'Replace',
               },
+              hint = { enable = true },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
@@ -848,6 +851,16 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+  },
+
+  {
+    'rebelot/kanagawa.nvim',
+  },
+
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -859,17 +872,11 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'kanagawa'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
-  },
-
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
   },
 
   -- Highlight todo, notes, etc in comments
@@ -965,13 +972,6 @@ require('lazy').setup({
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
   --
-
-  {
-    'Mythos-404/xmake.nvim',
-    lazy = true,
-    event = 'BufReadPost',
-    config = true,
-  },
 
   {
     'rcarriga/nvim-notify',
