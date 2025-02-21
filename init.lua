@@ -976,10 +976,6 @@ require('lazy').setup({
   --
 
   {
-    'rcarriga/nvim-notify',
-  },
-
-  {
     'akinsho/toggleterm.nvim',
     version = '*', -- Use the latest stable version
     config = function()
