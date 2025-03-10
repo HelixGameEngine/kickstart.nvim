@@ -156,7 +156,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -628,6 +628,8 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        jsonls = {},
+        bashls = {},
         clangd = {
           cmd = { 'clangd', '--function-arg-placeholders=0' },
         },
@@ -859,7 +861,13 @@ require('lazy').setup({
     event = 'VeryLazy', -- Or `LspAttach`
     priority = 1000, -- needs to be loaded in first
     config = function()
-      require('tiny-inline-diagnostic').setup()
+      require('tiny-inline-diagnostic').setup {
+        preset = 'ghost',
+        break_line = {
+          enabled = true,
+          after = 30,
+        },
+      }
       vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
     end,
   },
